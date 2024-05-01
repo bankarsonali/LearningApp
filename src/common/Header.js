@@ -1,23 +1,27 @@
 import * as React from 'react';
-import { View, Text, Button, TouchableOpacity, TextBase, StyleSheet } from 'react-native';
+import { View, Text, Button, TouchableOpacity, TextBase, StyleSheet ,Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 function Header(props) {
-    console.log("props", props)
+    // console.log("props", props)
     return (
-          <View style={styles.header}>
-            <Text style={{fontSize: 14, color:'black', marginLeft:10}}>{props.name}</Text>
+          <View style={{...styles.header, marginTop :  Platform.OS === 'ios' ? '10%' : 0}}>
             {props.goback ? 
                <View>
-                 <TouchableOpacity>
-                 <Icon name="rocket" size={30} color="#900" />
+                 <TouchableOpacity
+                  style={{}}
+                  onPress={() => props.OnPressBack()}
+                 >
+                   <Icon name="long-arrow-left" size={20} color="black" />
                  </TouchableOpacity>
                 </View>
                 :
                 <View>
                 </View>
              } 
+            <Text style={{fontSize: 18, color:'black',fontWeight:'700', marginLeft: 15}}>{props.name}</Text>
+            
           </View>
     );
   }
@@ -25,8 +29,12 @@ function Header(props) {
   const styles = StyleSheet.create({
     header : {
         backgroundColor:'white',
-        height: '10%',
-        width: '100%'
+        height: '8%',
+        width: '100%',
+        justifyContent:'flex-start',
+        alignItems:'center',
+        backgroundColor:'#c6cbef',
+        flexDirection:'row'
     }
   })
   export default Header;

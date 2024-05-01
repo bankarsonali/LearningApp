@@ -5,16 +5,19 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   Text,
   useColorScheme,
   View,
+  Alert,
+  Platform
 } from 'react-native';
 
 import { Colors} from 'react-native/Libraries/NewAppScreen';
 import AppNavigator from './src/Navigators/AppNavigator';
+import messaging from '@react-native-firebase/messaging';
 
 
 
@@ -24,6 +27,34 @@ function App(){
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  useEffect(() => {
+    console.log("In useEffect+++")
+    getDeviceToken()
+
+  },[]);
+
+  const getDeviceToken = async() => {
+    let token
+    // if(Platform.OS === 'ios'){
+    //   await messaging().registerDeviceForRemoteMessages();
+    //   token = await messaging().getToken();
+    // }else{
+       token =  await messaging().getToken();
+   // }
+    
+    console.warn(token)
+    console.log("Token", token)
+  }
+
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived in forground mode!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
+
 
   return (
      <View style={{flex: 1}}>

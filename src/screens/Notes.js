@@ -4,14 +4,15 @@ import Header from '../common/Header';
 
 
 function Notes({navigation}) {
+
+      OnPressBack = () => {
+        navigation.goBack()
+      }
+
     return (
-      <View style={{ flex: 1, backgroundColor:'white' }}>
-        <Header name={'Notes'} goback={true}/>
-        <Text style={{fontSize: 14, color:'red'}}>Notes Screen</Text>
-        <Button
-            title="Go to Home"
-            onPress={() => navigation.goBack()}
-            />
+      <View style={{ flex: 1 }}>
+        <Header name={'Notes'} goback={true} OnPressBack={OnPressBack}/>
+        
       </View>
     );
   }

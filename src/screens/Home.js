@@ -1,19 +1,17 @@
-import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import  React, {useEffect} from 'react';
+import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import Header from '../common/Header';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+import DrawerNavigator from '../Navigators/DrawerNavigator';
 
 function Home({navigation}) {
+
     return (
-        <View style={{flex:1,  backgroundColor:'white'}}>
-          <Header name={'Home'} goback={false}/>
-          <Text style={{fontSize: 14, color:'red'}}>Home Screen</Text>
-            <Button
-            title="Go to Notes"
-            onPress={() => navigation.navigate('Notes')}
-            />
-        </View>
+          <DrawerNavigator />          
     );
   }
 
+  const styles = StyleSheet.create({
+    
+  })
   export default Home;
