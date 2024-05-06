@@ -18,8 +18,8 @@ import {
 import { Colors} from 'react-native/Libraries/NewAppScreen';
 import AppNavigator from './src/Navigators/AppNavigator';
 import messaging from '@react-native-firebase/messaging';
-
-
+import {Provider} from 'react-redux';
+import { store } from './src/redux/store/Store';
 
 function App(){
   const isDarkMode = useColorScheme() === 'dark';
@@ -57,9 +57,11 @@ function App(){
 
 
   return (
-     <View style={{flex: 1}}>
-       <AppNavigator />
-     </View>
+    <Provider store={store}>
+      <View style={{flex: 1}}>
+        <AppNavigator />
+      </View>
+     </Provider>
   );
 }
 

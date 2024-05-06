@@ -1,40 +1,43 @@
-import * as React from 'react';
-import { View, Text, Button, TouchableOpacity, TextBase, StyleSheet ,Platform} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {View, Text, TouchableOpacity} from 'react-native';
+import React from 'react';
 
+const Header = (props) => {
 
-function Header(props) {
-    // console.log("props", props)
-    return (
-          <View style={{...styles.header, marginTop :  Platform.OS === 'ios' ? '10%' : 0}}>
-            {props.goback ? 
-               <View>
-                 <TouchableOpacity
-                  style={{}}
-                  onPress={() => props.OnPressBack()}
-                 >
-                   <Icon name="long-arrow-left" size={20} color="black" />
-                 </TouchableOpacity>
-                </View>
-                :
-                <View>
-                </View>
-             } 
-            <Text style={{fontSize: 18, color:'black',fontWeight:'700', marginLeft: 15}}>{props.name}</Text>
-            
-          </View>
-    );
-  }
-
-  const styles = StyleSheet.create({
-    header : {
-        backgroundColor:'white',
-        height: '8%',
+  return (
+    <View
+      style={{
         width: '100%',
-        justifyContent:'flex-start',
-        alignItems:'center',
-        backgroundColor:'#c6cbef',
-        flexDirection:'row'
-    }
-  })
-  export default Header;
+        height: 70,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+        borderBottomWidth: 0.2,
+        borderBottomColor: '#8e8e8e',
+        backgroundColor:'#fff',
+        marginTop :  Platform.OS === 'ios' ? '10%' : 0
+      }}>
+      <Text
+        style={{
+          fontWeight: '600',
+          fontSize: 20,
+          color: '#000',
+          marginLeft: 20,
+        }}>
+        {props.title || 'GroceryApp'}
+      </Text>
+
+      <TouchableOpacity
+        style={{
+          marginRight: 20,
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: 50,
+          height: 30,
+        }}>
+        <Text>Mode</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+export default Header;

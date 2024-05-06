@@ -4,7 +4,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Main from '../screens/Main';
-import Notes from '../screens/Notes';
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +20,7 @@ const DrawerNavigator = () => {
                 <Drawer.Screen
                     name="Main"
                     component={Main}
-                    options={{headerShown: true}}
+                    options={{headerShown: false}}
                 />
             </Drawer.Navigator>
     );
