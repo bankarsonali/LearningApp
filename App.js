@@ -18,7 +18,8 @@ import {
 import { Colors} from 'react-native/Libraries/NewAppScreen';
 import AppNavigator from './src/Navigators/AppNavigator';
 import messaging from '@react-native-firebase/messaging';
-
+import { Provider } from 'react-redux';
+import Store from './src/redux/Store';
 
 
 function App(){
@@ -58,7 +59,9 @@ function App(){
 
   return (
      <View style={{flex: 1}}>
+       <Provider store={Store}>
        <AppNavigator />
+       </Provider>
      </View>
   );
 }
